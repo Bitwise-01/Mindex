@@ -13,8 +13,6 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.SimpleMongoClientDbFactory;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
-// @EnableMongoRepositories(basePackageClasses = EmployeeRepository.class)
-// @EnableMongoRepositories(basePackageClasses = CompensationRepository.class)
 @EnableMongoRepositories(basePackageClasses = { EmployeeRepository.class,
         CompensationRepository.class })
 @Configuration

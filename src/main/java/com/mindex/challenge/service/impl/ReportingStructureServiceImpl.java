@@ -1,15 +1,14 @@
 package com.mindex.challenge.service.impl;
 
-import com.mindex.challenge.dao.EmployeeRepository;
-import com.mindex.challenge.data.Employee;
-import com.mindex.challenge.data.ReportingStructure;
-import com.mindex.challenge.service.ReportingStructureService;
+import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.mindex.challenge.data.Employee;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
+import com.mindex.challenge.dao.EmployeeRepository;
+import com.mindex.challenge.data.ReportingStructure;
+import com.mindex.challenge.service.ReportingStructureService;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @Service
 public class ReportingStructureServiceImpl implements ReportingStructureService {
@@ -21,7 +20,7 @@ public class ReportingStructureServiceImpl implements ReportingStructureService 
 
     @Override
     public ReportingStructure read(String id) {
-        LOG.debug("Locating the reporting structure of employee with id [{}]", id);
+        LOG.debug("Querying reporting structure of employee with id [{}]", id);
 
         Employee employee = employeeRepository.findByEmployeeId(id);
         ReportingStructure reportingStructure = new ReportingStructure();
@@ -41,6 +40,7 @@ public class ReportingStructureServiceImpl implements ReportingStructureService 
     private int getReportCount(String employeeId) {
         int total = 0;
         Employee employee = employeeRepository.findByEmployeeId(employeeId);
+
         if (employee == null) {
             return total;
         }
