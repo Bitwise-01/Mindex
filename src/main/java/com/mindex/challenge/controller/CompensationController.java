@@ -1,5 +1,7 @@
 package com.mindex.challenge.controller;
 
+import java.util.Date;
+
 import com.mindex.challenge.data.Compensation;
 import com.mindex.challenge.data.Employee;
 import com.mindex.challenge.service.CompensationService;
@@ -19,12 +21,35 @@ public class CompensationController {
     @Autowired
     private EmployeeService employeeService;
 
-    // @PostMapping("/employee")
-    // public Employee create(@RequestBody Employee employee) {
-    // LOG.debug("Received employee create request for [{}]", employee);
+    @PostMapping("/compensation")
+    public Compensation create(@RequestBody Compensation compensationInfo) {
+        LOG.debug("Received employee create request for [{}]", compensationInfo.getEmployee().getEmployeeId());
 
-    // return employeeService.create(employee);
-    // }
+        if (compensationInfo.getEmployee().getEmployeeId() == null) {
+            throw new RuntimeException("employee.employeeId is a required field");
+        }
+
+        if (compensationInfo.getEffectiveDate() == null) {
+            throw new RuntimeException("effectiveDate is a required field");
+        }
+
+        final double MINI_WAGE = 13.20;
+
+        if (compensationInfo.getSalary() <= MINI_WAGE) {
+            throw new RuntimeException("salary must be at least $" + MINI_WAGE);
+        }
+
+        Employee employee = employeeService.read(compensationInfo.getEmployee().getEmployeeId());
+
+        Compensation compensation = new Compensation(
+                employee,
+                compensationInfo.getSalary(),
+                compensationInfo.getEffectiveDate());
+
+        System.out.println(compensation);
+
+        return compensationService.create(compensation);
+    }
 
     @GetMapping("/compensation/{id}")
     public Compensation read(@PathVariable String id) {

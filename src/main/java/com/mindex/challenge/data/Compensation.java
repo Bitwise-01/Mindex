@@ -10,12 +10,14 @@ public class Compensation {
     public Compensation() {
     }
 
-    public Employee getEmployee() {
-        return employee;
+    public Compensation(Employee employee, double salary, Date effectiveDate) {
+        this.employee = employee;
+        this.salary = salary;
+        this.effectiveDate = effectiveDate;
     }
 
-    public String getEmployeeId() {
-        return employee.getEmployeeId();
+    public Employee getEmployee() {
+        return employee;
     }
 
     public double getSalary() {

@@ -1,6 +1,9 @@
 package com.mindex.challenge.service.impl;
 
 import com.mindex.challenge.dao.EmployeeRepository;
+
+import java.util.Date;
+
 import com.mindex.challenge.dao.CompensationRepository;
 import com.mindex.challenge.data.Compensation;
 import com.mindex.challenge.data.Employee;
@@ -31,4 +34,14 @@ public class CompensationServiceImpl implements CompensationService {
         return compensation;
     }
 
+    @Override
+    public Compensation create(Compensation compensation) {
+        LOG.debug("Creating the compensation for employee with id [{}]", compensation.getEmployee().getEmployeeId());
+
+        if (compensationRepository.findByEmployee(compensation.getEmployee()) != null) {
+            throw new RuntimeException("Employee already has compensation associated with it");
+        }
+
+        return compensation;
+    }
 }
