@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 @RestController
 public class CompensationController {
-    final double MINI_WAGE = 13.20;
+    private final double MINI_WAGE = 13.20;
     private static final Logger LOG = LoggerFactory.getLogger(CompensationController.class);
 
     @Autowired
