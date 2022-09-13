@@ -2,7 +2,9 @@ package com.mindex.challenge;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mindex.challenge.dao.EmployeeRepository;
+import com.mindex.challenge.dao.CompensationRepository;
 import com.mindex.challenge.data.Employee;
+import com.mindex.challenge.data.Compensation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -16,6 +18,9 @@ public class DataBootstrap {
 
     @Autowired
     private EmployeeRepository employeeRepository;
+
+    @Autowired
+    private CompensationRepository compensationRepository;
 
     @Autowired
     private ObjectMapper objectMapper;
