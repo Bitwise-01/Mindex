@@ -13,6 +13,13 @@ public class Employee {
     public Employee() {
     }
 
+    public Employee(String firstname, String lastname, String position, String department) {
+        this.firstName = firstname;
+        this.lastName = lastname;
+        this.position = position;
+        this.department = department;
+    }
+
     public String getEmployeeId() {
         return employeeId;
     }
