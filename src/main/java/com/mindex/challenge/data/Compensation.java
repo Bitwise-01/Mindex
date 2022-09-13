@@ -1,16 +1,16 @@
 package com.mindex.challenge.data;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Compensation {
     private Employee employee;
     private double salary;
-    private Date effectiveDate;
+    private LocalDate effectiveDate;
 
     public Compensation() {
     }
 
-    public Compensation(Employee employee, double salary, Date effectiveDate) {
+    public Compensation(Employee employee, double salary, LocalDate effectiveDate) {
         this.employee = employee;
         this.salary = salary;
         this.effectiveDate = effectiveDate;
@@ -24,7 +24,7 @@ public class Compensation {
         return salary;
     }
 
-    public Date getEffectiveDate() {
+    public LocalDate getEffectiveDate() {
         return effectiveDate;
     }
 
@@ -36,7 +36,7 @@ public class Compensation {
         this.salary = salary;
     }
 
-    public void setEffectiveDate(Date effectiveDate) {
+    public void setEffectiveDate(LocalDate effectiveDate) {
         this.effectiveDate = effectiveDate;
     }
 }
